@@ -1,0 +1,8 @@
+{
+  "config-option.clear-before-search.name": "Clear Before Search",
+  "config-option.clear-before-search.description": "Clear the text every time you start a new search",
+  "config-option.show-search.name": "Show Search",
+  "config-option.show-search.description": "Keybind for showing the search menu",
+  "config-option.toggle-visible.name": "Toggle Visible",
+  "config-option.toggle-visible.descriptoin": "Toggle visibility of the pointers on or off",
+}
