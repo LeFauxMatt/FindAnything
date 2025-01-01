@@ -5,6 +5,7 @@ using StardewValley.ItemTypeDefinitions;
 
 namespace LeFauxMods.FindAnything.Models;
 
+/// <inheritdoc />
 internal sealed class FoundDebris : IFoundEntity
 {
     private readonly WeakReference<Debris> context;

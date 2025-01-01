@@ -5,7 +5,7 @@ using StardewValley.Characters;
 
 namespace LeFauxMods.FindAnything.Models;
 
-/// <summary>Represents a found character in a location.</summary>
+/// <inheritdoc />
 internal sealed class FoundCharacter : IFoundEntity
 {
     private readonly WeakReference<Character> context;

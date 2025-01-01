@@ -6,7 +6,7 @@ using StardewValley.Objects;
 
 namespace LeFauxMods.FindAnything.Models;
 
-/// <summary>Represents a found furniture in a location.</summary>
+/// <inheritdoc />
 internal sealed class FoundFurniture : IFoundEntity
 {
     private readonly WeakReference<Furniture> context;

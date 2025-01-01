@@ -12,9 +12,6 @@ namespace LeFauxMods.FindAnything.Services;
 internal sealed class SearchMenu : IClickableMenu
 {
     private const int DebounceTime = 20;
-    private readonly Func<string> getText;
-    private readonly IModHelper helper;
-    private readonly Action<string> setText;
     private readonly TextBox textBox;
 
     private Queue<string>? cachedKeywords;
@@ -22,24 +19,17 @@ internal sealed class SearchMenu : IClickableMenu
     private int debounceTimer;
     private string previousText;
 
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="SearchMenu" /> class.
-    /// </summary>
+    /// <inheritdoc />
     /// <param name="helper">Dependency for events, input, and content.</param>
-    /// <param name="getText">Get the search text.</param>
-    /// <param name="setText">Set the search text.</param>
-    public SearchMenu(IModHelper helper, Func<string> getText, Action<string> setText)
+    public SearchMenu(IModHelper helper)
         : base(
             (Game1.uiViewport.Width - Math.Min(800, Game1.uiViewport.Width)) / 2,
             (Game1.uiViewport.Height - 48) / 2,
             Math.Min(800, Game1.uiViewport.Width), 48)
     {
-        this.helper = helper;
-        this.getText = getText;
-        this.setText = setText;
         this.previousText = string.Empty;
         this.textBox = new TextBox(
-            this.helper.GameContent.Load<Texture2D>("LooseSprites/textBox"),
+            helper.GameContent.Load<Texture2D>("LooseSprites/textBox"),
             null,
             Game1.smallFont,
             Game1.textColor)
@@ -49,21 +39,17 @@ internal sealed class SearchMenu : IClickableMenu
             Width = this.width,
             limitWidth = false,
             Selected = true,
-            Text = getText()
+            Text = ModState.SearchText
         };
 
         this.textBox.OnEnterPressed += this.OnEnterPressed;
         this.textBox.OnTabPressed += this.OnTabPressed;
     }
 
-    private string Text
-    {
-        get => this.getText();
-        set => this.setText(value);
-    }
-
     public override void draw(SpriteBatch b)
     {
+        b.Draw(Game1.fadeToBlackRect, new Rectangle(0, 0, Game1.uiViewport.Width, Game1.uiViewport.Height),
+            Color.Black * 0.5f);
         this.textBox.Draw(b, false);
         this.drawMouse(b);
     }
@@ -81,11 +67,11 @@ internal sealed class SearchMenu : IClickableMenu
         switch (key)
         {
             case Keys.Escape:
-                this.Text = string.Empty;
+                ModState.SearchText = string.Empty;
                 this.exitThisMenuNoSound();
                 return;
             case Keys.Enter:
-                this.Text = this.textBox.Text;
+                ModState.SearchText = this.textBox.Text;
                 this.exitThisMenuNoSound();
                 return;
             case Keys.Tab:
@@ -120,9 +106,9 @@ internal sealed class SearchMenu : IClickableMenu
     /// <inheritdoc />
     public override void update(GameTime time)
     {
-        if (this.debounceTimer > 0 && --this.debounceTimer == 0 && this.textBox.Text != this.Text)
+        if (this.debounceTimer > 0 && --this.debounceTimer == 0 && this.textBox.Text != ModState.SearchText)
         {
-            this.Text = this.textBox.Text;
+            ModState.SearchText = this.textBox.Text;
         }
 
         if (this.textBox.Text.Equals(this.previousText, StringComparison.OrdinalIgnoreCase))
@@ -136,7 +122,7 @@ internal sealed class SearchMenu : IClickableMenu
 
     private void OnEnterPressed(TextBox sender)
     {
-        this.Text = this.textBox.Text;
+        ModState.SearchText = this.textBox.Text;
         if (this.readyToClose())
         {
             this.exitThisMenuNoSound();
@@ -156,7 +142,8 @@ internal sealed class SearchMenu : IClickableMenu
                 return;
             }
 
-            foreach (var keyword in keywords.OrderBy(keyword => keyword.Trim().ToLower(CultureInfo.InvariantCulture))
+            foreach (var keyword in keywords
+                         .OrderBy(static keyword => keyword.Trim().ToLower(CultureInfo.InvariantCulture))
                          .Distinct())
             {
                 this.cachedKeywords.Enqueue(keyword);

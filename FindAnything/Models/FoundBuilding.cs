@@ -6,7 +6,7 @@ using StardewValley.ItemTypeDefinitions;
 
 namespace LeFauxMods.FindAnything.Models;
 
-/// <summary>Represents a found building in a location.</summary>
+/// <inheritdoc />
 internal sealed class FoundBuilding : IFoundEntity
 {
     private readonly WeakReference<Building> context;

@@ -6,7 +6,7 @@ using StardewValley.TerrainFeatures;
 
 namespace LeFauxMods.FindAnything.Models;
 
-/// <summary>Represents a found terrain in a location.</summary>
+/// <inheritdoc />
 internal sealed class FoundTerrain : IFoundEntity
 {
     private readonly WeakReference<TerrainFeature> context;
