@@ -1,8 +1,8 @@
 {
-  "config-option.clear-before-search.name": "Clear Before Search",
-  "config-option.clear-before-search.description": "Clear the text every time you start a new search",
-  "config-option.show-search.name": "Show Search",
-  "config-option.show-search.description": "Keybind for showing the search menu",
-  "config-option.toggle-visible.name": "Toggle Visible",
-  "config-option.toggle-visible.description": "Toggle visibility of the pointers on or off"
+  "config-option.clear-before-search.name": "Effacer avant la recherche",
+  "config-option.clear-before-search.description": "Efface le texte chaque fois que vous commencez une nouvelle recherche",
+  "config-option.show-search.name": "Montrer la recherche",
+  "config-option.show-search.description": "Raccourci pour montrer le menu de recherche",
+  "config-option.toggle-visible.name": "Visible ?",
+  "config-option.toggle-visible.description": "Active/désactive la visibilité du pointeur.",
 }
