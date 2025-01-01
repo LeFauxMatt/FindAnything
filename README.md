@@ -7,6 +7,7 @@ Stardew Valley mod which lets you search for anything in your current location.
 - [Find Anything](#find-anything)
   - [Table of Contents](#table-of-contents)
   - [Configurations](#configurations)
+  - [Features](#features)
   - [Translations](#translations)
 
 ## Configurations
@@ -14,32 +15,31 @@ Stardew Valley mod which lets you search for anything in your current location.
 For ease of use, it is recommended to set config options
 from [Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098).
 
-<table>
-<thead>
-<tr>
-<th>Config Option</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ClearBeforeSearch</td>
-<td>Clear out the text before starting a new search.</td>
-<td>Boolean</td>
-</tr>
-<tr>
-<td>ShowSearch</td>
-<td>Keybind for showing the search menu. Default <code>CTRL+F</code>.</td>
-<td>Keybind</td>
-</tr>
-<tr>
-<td>ToggleVisible</td>
-<td>Keybind for toggling pointers on or off. Default <code>CTRL+Space</code>.</td>
-<td>Keybind</td>
-</tr>
-</tbody>
-</table>
+![Config Menu](docs/config-menu.png)
+
+## Features
+
+Search for anything in your current location.
+
+![Find Anything](docs/find-anything.png)
+
+Pointers guide you to your search.
+
+![Pointers](docs/pointers.png)
+
+Search for your pet.
+
+![Find Pet](docs/find-pet.png)
+
+Find your friends.
+
+![Find Villagers](docs/find-villagers.png)
+
+Find trees.
+
+![Find Trees](docs/find-trees.png)
+
+There are many more things you can search for.
 
 ## Translations
 

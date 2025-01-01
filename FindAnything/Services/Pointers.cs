@@ -7,18 +7,12 @@ namespace LeFauxMods.FindAnything.Services;
 /// <summary>Represents a hud for displaying pointers to searched entities.</summary>
 internal sealed class Pointers : IClickableMenu
 {
-    private readonly ModConfig config;
-
-    public Pointers(ModConfig config)
-    {
-        this.config = config;
-        this.allClickableComponents = [];
-    }
+    public Pointers() => this.allClickableComponents = [];
 
     /// <inheritdoc />
     public override void draw(SpriteBatch b)
     {
-        if (!Game1.IsHudDrawn || !this.config.Visible || this.allClickableComponents.Count == 0)
+        if (!Game1.IsHudDrawn || !ModState.Config.Visible || this.allClickableComponents.Count == 0)
         {
             return;
         }
@@ -30,7 +24,7 @@ internal sealed class Pointers : IClickableMenu
                 continue;
             }
 
-            if (pointer.Entity.Location != Game1.currentLocation)
+            if (!ReferenceEquals(pointer.Entity.Location, Game1.currentLocation))
             {
                 this.allClickableComponents.Remove(pointer);
                 continue;

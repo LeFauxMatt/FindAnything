@@ -1,11 +1,11 @@
-﻿using LeFauxMods.Common.Integrations.FindAnything;
+using LeFauxMods.Common.Integrations.FindAnything;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley.ItemTypeDefinitions;
 
 namespace LeFauxMods.FindAnything.Models;
 
-/// <summary>Represents a found placed object in a location.</summary>
+/// <inheritdoc />
 internal sealed class FoundObject : IFoundEntity
 {
     private readonly WeakReference<SObject> context;
