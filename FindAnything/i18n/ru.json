@@ -1,8 +1,8 @@
 {
-  "config-option.clear-before-search.name": "Clear Before Search",
-  "config-option.clear-before-search.description": "Clear the text every time you start a new search",
-  "config-option.show-search.name": "Show Search",
-  "config-option.show-search.description": "Keybind for showing the search menu",
-  "config-option.toggle-visible.name": "Toggle Visible",
-  "config-option.toggle-visible.description": "Toggle visibility of the pointers on or off"
+  "config-option.clear-before-search.name": "Очистка перед поиском",
+  "config-option.clear-before-search.description": "Очищать текст каждый раз при начале нового поиска.",
+  "config-option.show-search.name": "Показать поиск",
+  "config-option.show-search.description": "Горячая клавиша для отображения меню поиска.",
+  "config-option.toggle-visible.name": "Переключение видимости",
+  "config-option.toggle-visible.description": "Включение или отключение видимости указателей."
 }
